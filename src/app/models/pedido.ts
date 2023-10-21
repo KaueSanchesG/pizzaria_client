@@ -1,11 +1,13 @@
 import { Abstract } from './abstract';
 import { Cliente } from './cliente';
 import { Funcionario } from './funcionario';
-import { ProdutoSabor } from './produto-sabor';
+import { Pizza } from './pizza';
+import { Produto } from './produto';
 
 export class Pedido extends Abstract {
   cliente!: Cliente;
-  produtoSaborList!: ProdutoSabor[];
+  produtoList!: Produto[];
+  pizzaList!: Pizza[];
   entrega!: boolean;
   formaDePagamento!: String;
   valorTotal!: number;
