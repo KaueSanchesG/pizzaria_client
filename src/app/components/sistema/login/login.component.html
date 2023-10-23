@@ -17,6 +17,7 @@
         <div class="login-info">
           <p>Qual o seu e-email ?</p>
           <input
+            [(ngModel)]="login"
             class="input"
             type="text"
             placeholder="Informa pra gente seu email"
@@ -25,6 +26,7 @@
         <div class="login-info">
           <p>Qual a sua senha ?</p>
           <input
+            [(ngModel)]="senha"
             class="input"
             id="password"
             [type]="showPassword ? 'text' : 'password'"
@@ -41,8 +43,8 @@
           </div>
         </div>
 
-        <div class="login" routerLink="/home">
-          <button class="learn-more">
+        <div class="login">
+          <button class="learn-more" (click)="doLogin()">
             <span class="circle" aria-hidden="true">
               <span class="icon arrow"></span>
             </span>

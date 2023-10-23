@@ -12,6 +12,7 @@ import { IndexComponent } from './layout/index/index.component';
 import { LoginComponent } from './components/sistema/login/login.component';
 import { RegisterComponent } from './components/sistema/register/register.component';
 import { heroEye, heroEyeSlash } from '@ng-icons/heroicons/outline';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { heroEye, heroEyeSlash } from '@ng-icons/heroicons/outline';
     BrowserModule,
     AppRoutingModule,
     NgIconsModule.withIcons({ heroEye, heroEyeSlash }),
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
