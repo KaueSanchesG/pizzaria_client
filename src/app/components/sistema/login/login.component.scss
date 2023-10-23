@@ -56,7 +56,10 @@
           display: flex;
           flex-direction: column;
           font-family: "Public Sans", sans-serif;
-
+          position: relative;
+          p {
+            margin-bottom: 8px;
+          }
           input {
             padding: 16px;
             border: none;
@@ -65,18 +68,36 @@
             background-color: #e7e7e7;
             box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.3);
             transition: 300ms ease-in-out;
+            font-size: 16px;
             .input:focus {
               background-color: white;
               transform: scale(1.05);
               box-shadow: 13px 13px 100px #f2f8f9, -13px -13px 100px #ffffff;
             }
           }
+          .icon-password {
+            font-size: 24px;
+          }
+
+          .show-password {
+            position: absolute;
+            top: 40%;
+            right: 12px;
+            border: none;
+            cursor: pointer;
+            background: none;
+          }
         }
-        .forgot-password a {
+        .forgot-password {
           display: flex;
           justify-content: end;
-          font-family: "Public Sans", sans-serif;
-          color: #d10000;
+          a {
+            display: flex;
+            justify-content: end;
+            margin-top: 8px;
+            font-family: "Public Sans", sans-serif;
+            color: #d10000;
+          }
         }
       }
       .login {
@@ -175,7 +196,7 @@
           color: #fff;
         }
         .register {
-          padding-top: 4px;
+          padding-top: 16px;
           font-size: 16px;
         }
       }

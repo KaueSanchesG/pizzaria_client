@@ -26,26 +26,34 @@
           <p>Qual a sua senha ?</p>
           <input
             class="input"
-            type="password"
+            id="password"
+            [type]="showPassword ? 'text' : 'password'"
             placeholder="Informa pra gente a sua senha"
           />
+          <button class="show-password" (click)="togglePassword()">
+            <ng-icon
+              class="icon-password"
+              name="{{ showPassword ? 'heroEye' : 'heroEyeSlash' }}"
+            ></ng-icon>
+          </button>
           <div class="forgot-password">
             <a href="/register">Esqueci minha senha</a>
           </div>
         </div>
-      </div>
 
-      <div class="login" routerLink="/home">
-        <button class="learn-more">
-          <span class="circle" aria-hidden="true">
-            <span class="icon arrow"></span>
-          </span>
-          <span class="button-text">Acessar</span>
-        </button>
-        <p class="register">
-          Ainda nao tem conta ? <a href="/register">Cadastre-se aqui </a>
-        </p>
+        <div class="login" routerLink="/home">
+          <button class="learn-more">
+            <span class="circle" aria-hidden="true">
+              <span class="icon arrow"></span>
+            </span>
+            <span class="button-text">Acessar</span>
+          </button>
+          <p class="register">
+            Ainda nao tem conta ? <a href="/register">Cadastre-se aqui </a>
+          </p>
+        </div>
       </div>
     </div>
+    <script></script>
   </div>
 </div>
