@@ -17,6 +17,7 @@
         <div class="login-info">
           <p>Nome</p>
           <input
+            [(ngModel)]="funcionario.nome"
             class="input"
             type="text"
             placeholder="Informa pra gente seu Nome"
@@ -25,14 +26,16 @@
         <div class="login-info">
           <p>Login</p>
           <input
+            [(ngModel)]="funcionario.login"
             class="input"
             type="text"
-            placeholder="Informa pra gente seu email"
+            placeholder="Informa pra gente seu login"
           />
         </div>
         <div class="login-info">
           <p>Senha</p>
           <input
+            [(ngModel)]="funcionario.senha"
             class="input"
             type="password"
             placeholder="Informa pra gente a sua senha"
@@ -40,8 +43,8 @@
         </div>
       </div>
 
-      <div class="login" routerLink="/home">
-        <button class="learn-more">
+      <div class="login">
+        <button class="learn-more" (click)="salvar()">
           <span class="circle" aria-hidden="true">
             <span class="icon arrow"></span>
           </span>
