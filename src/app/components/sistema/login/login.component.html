@@ -10,21 +10,23 @@
     <div class="content">
       <div class="title-content">
         <h1 class="title">Acessar minha conta</h1>
-        <p class="subtitle">Oi Sumido! Que bom te ver de novo por aqui!</p>
+        <p class="subtitle">Entre agora para genrenciar seu negocio</p>
       </div>
 
       <div class="form">
         <div class="login-info">
-          <p>Qual o seu e-email ?</p>
+          <p>Informe o seu Login</p>
           <input
             [(ngModel)]="login"
             class="input"
             type="text"
-            placeholder="Informa pra gente seu email"
+            placeholder="Informa pra gente seu Login"
           />
+          <div class="error-message">{{ loginError }}</div>
         </div>
+
         <div class="login-info">
-          <p>Qual a sua senha ?</p>
+          <p>Informe a sua senha</p>
           <input
             [(ngModel)]="senha"
             class="input"
@@ -38,24 +40,26 @@
               name="{{ showPassword ? 'heroEye' : 'heroEyeSlash' }}"
             ></ng-icon>
           </button>
-          <div class="forgot-password">
-            <a href="/register">Esqueci minha senha</a>
-          </div>
+          <div class="error-message">{{ passwordError }}</div>
         </div>
 
-        <div class="login">
-          <button class="learn-more" (click)="doLogin()">
-            <span class="circle" aria-hidden="true">
-              <span class="icon arrow"></span>
-            </span>
-            <span class="button-text">Acessar</span>
-          </button>
-          <p class="register">
-            Ainda nao tem conta ? <a href="/register">Cadastre-se aqui </a>
-          </p>
+        <div class="error-message">{{ credentialsError }}</div>
+        <div class="forgot-password">
+          <a href="/register">Esqueci minha senha</a>
         </div>
       </div>
+
+      <div class="login">
+        <button class="learn-more" (click)="doLogin()">
+          <span class="circle" aria-hidden="true">
+            <span class="icon arrow"></span>
+          </span>
+          <span class="button-text">Acessar</span>
+        </button>
+      </div>
     </div>
-    <script></script>
+  </div>
+  <div class="loading-container" *ngIf="isLoading">
+    <div class="loading-spinner"></div>
   </div>
 </div>

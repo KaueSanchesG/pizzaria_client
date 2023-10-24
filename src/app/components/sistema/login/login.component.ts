@@ -14,25 +14,57 @@ export class LoginComponent {
   showPassword = false;
   login = '';
   senha: string = '';
+  isLoading: boolean = false;
+  errorMessage: string = '';
+
+  loginError: string = '';
+  passwordError: string = '';
+  credentialsError: string = '';
 
   togglePassword() {
     this.showPassword = !this.showPassword;
   }
 
   doLogin() {
+    this.loginError = '';
+    this.passwordError = '';
+
+    if (!this.login) {
+      this.loginError = 'O campo Login é obrigatório.';
+      return;
+    }
+
+    if (!this.senha) {
+      this.passwordError = 'O campo Senha é obrigatório.';
+      return;
+    }
+
     const model: Login = {
       login: this.login,
       senha: this.senha,
     };
 
+    this.isLoading = true;
+    this.errorMessage = '';
+
     this.authLogin
       .verify(model)
       .then((response) => {
-        alert(response.data);
-        this.router.navigate(['/home']);
+        setTimeout(() => {
+          this.router.navigate(['/home']);
+        }, 2000);
       })
       .catch((error) => {
-        alert(error.response.data);
+        setTimeout(() => {
+          this.credentialsError =
+            'Credenciais inválidas. Login ou a senha estão incorretas.';
+        }, 2100);
+      })
+      .finally(() => {
+        setTimeout(() => {
+          this.isLoading = false;
+        }, 2000);
+        this.errorMessage = '';
       });
   }
 }
