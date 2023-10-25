@@ -51,7 +51,7 @@ export class LoginComponent {
       .verify(model)
       .then((response) => {
         setTimeout(() => {
-          this.router.navigate(['/home']);
+          this.router.navigate(['/order']);
         }, 2000);
       })
       .catch((error) => {
