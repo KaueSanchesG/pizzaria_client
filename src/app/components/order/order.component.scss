@@ -196,12 +196,16 @@
   }
   .pedido {
     display: flex;
-    flex: 1;
+    flex-wrap: wrap; /* Permite a quebra de linha dos cartões */
+    justify-content: flex-start; /* Alinhamento à esquerda (pode ser ajustado conforme necessário) */
+    margin-bottom: 80px;
     .card {
       overflow: visible;
       width: 240px;
       height: 284px;
       padding: 16px;
+      margin-right: 16px; /* Espaçamento entre os cartões (ajuste conforme necessário) */
+      margin-bottom: 16px;
     }
 
     .content {
