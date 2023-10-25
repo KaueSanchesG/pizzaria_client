@@ -13,6 +13,7 @@ import { LoginComponent } from './components/sistema/login/login.component';
 import { RegisterComponent } from './components/sistema/register/register.component';
 import { heroEye, heroEyeSlash } from '@ng-icons/heroicons/outline';
 import { FormsModule } from '@angular/forms';
+import { OrderComponent } from './components/order/order.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { FormsModule } from '@angular/forms';
     IndexComponent,
     LoginComponent,
     RegisterComponent,
+    OrderComponent,
   ],
   imports: [
     BrowserModule,
