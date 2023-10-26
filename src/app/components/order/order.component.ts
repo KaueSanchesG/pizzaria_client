@@ -93,18 +93,17 @@ export class OrderComponent {
   }
   openDisableModal(modal: any, pedido: Pedido) {
     this.modal.open(modal, { size: 'md' });
+    this.pedidoSelecionado = pedido;
   }
   //metodo para o disable
 
-  disable(pedido: Pedido) {
-    if (confirm('Tem certeza que deseja desativar este pedido?')) {
-      this.service
-        .delete(pedido.id)
-        .then(() => {})
-        .catch((error) => {
-          console.log('Erro ao desativar o pedido:', error);
-        });
-      location.reload();
-    }
+  disable() {
+    console.log('selecionado', this.pedidoSelecionado);
+
+    this.service.delete(this.pedidoSelecionado.id).catch((error) => {
+      console.log('Erro ao desativar o pedido:', error);
+    });
+
+    location.reload();
   }
 }

@@ -242,6 +242,7 @@
   </div>
   <div class="modal-footer"></div>
 </ng-template>
+
 <ng-template #confirmDelivery let-modal>
   <div class="modal-header">
     <h4 class="modal-title">Confirmar Entrega</h4>
@@ -253,6 +254,6 @@
     ></button>
   </div>
   <div class="modal-cancel">
-    <button class="btn btn-primary">Salvar</button>
+    <button class="btn btn-primary" (click)="disable()">Salvar</button>
   </div>
 </ng-template>
