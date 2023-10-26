@@ -5,7 +5,7 @@
       <p class="subtitle">Todos seus pedidos!</p>
     </div>
     <div class="new-order">
-      <button class="learn-more" (click)="openNewOrderModal()">
+      <button class="learn-more" (click)="openNewOrderModal(criarPedido)">
         <span class="circle" aria-hidden="true">
           <span class="icon arrow"></span>
         </span>
@@ -187,3 +187,19 @@
     </div>
   </div>
 </div>
+
+<ng-template #criarPedido let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Pessoa</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <app-new-order></app-new-order>
+  </div>
+  <div class="modal-footer"></div>
+</ng-template>
