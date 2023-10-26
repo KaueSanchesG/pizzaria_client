@@ -14,11 +14,10 @@
     </div>
   </div>
   <div class="filter1">
-    <select>
-      <option selected value="0">Selecione o tipo</option>
-      <option value="1">No Wrapper</option>
-      <option value="2">No JS</option>
-      <option value="3">Nice!</option>
+    <select [(ngModel)]="selectedOption" (change)="onFilterChange()">
+      <option selected value="1">Em andamento</option>
+      <option value="2">Todos</option>
+      <option value="3">Precisa entregar</option>
     </select>
   </div>
   <div class="pedido">
@@ -74,7 +73,7 @@
                   ></path>
                 </svg>
               </button>
-              <button class="editBtn">
+              <button class="editBtn" (click)="disable(pedido)">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   data-name="Artboard 30"

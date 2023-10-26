@@ -14,12 +14,43 @@ export class OrderComponent {
   list: Pedido[] = [];
 
   pedidoSelecionado: Pedido = new Pedido();
+  selectedOption: string = '1';
 
   produtosDoPedido: Produto[] = [];
   pizzasDoPedido: Pizza[] = [];
 
   constructor(private modal: NgbModal, private service: PedidoService) {
-    this.listAll();
+    this.listBySelectedOption();
+  }
+
+  //metodos para os filtros
+
+  onFilterChange() {
+    this.listBySelectedOption();
+  }
+
+  listBySelectedOption() {
+    if (this.selectedOption == '1') {
+      this.listAtivo();
+    } else if (this.selectedOption === '2') {
+      this.listAll();
+    } else if (this.selectedOption === '3') {
+      this.listEntrega();
+    }
+  }
+
+  //metodos de listagem
+
+  listAtivo() {
+    this.service
+      .listByAtivo()
+      .then((response) => {
+        this.list = response.data;
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   listAll() {
@@ -34,6 +65,20 @@ export class OrderComponent {
       });
   }
 
+  listEntrega() {
+    this.service
+      .getPedidoByEntrega()
+      .then((response) => {
+        this.list = response.data;
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  //Funções para arir modais
+
   openNewOrderModal(modal: any) {
     this.pedidoSelecionado = new Pedido();
 
@@ -45,5 +90,20 @@ export class OrderComponent {
     this.pizzasDoPedido = pedido.pizzaList;
 
     this.modal.open(modal, { size: 'lg' });
+  }
+
+  //metodo para o disable
+
+  disable(pedido: Pedido) {
+    if (confirm('Tem certeza que deseja desativar este pedido?')) {
+      this.service
+        .delete(pedido.id)
+        .then(() => {
+          alert('Registro deletado');
+        })
+        .catch((error) => {
+          console.log('Erro ao desativar o pedido:', error);
+        });
+    }
   }
 }

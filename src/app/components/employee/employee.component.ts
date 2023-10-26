@@ -42,7 +42,7 @@ export class EmployeeComponent {
   service = inject(FuncionarioService);
   modal = inject(NgbModal);
 
-  constructor() {
+  constructor(private router: Router) {
     this.listAll();
   }
 
@@ -61,5 +61,7 @@ export class EmployeeComponent {
   openModal(modal: any) {
     this.modal.open(modal, { size: 'lg' });
   }
-  novoClient() {}
+  novoClient() {
+    this.router.navigate(['/register']);
+  }
 }

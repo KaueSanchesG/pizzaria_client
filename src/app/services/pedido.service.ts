@@ -32,7 +32,7 @@ export class PedidoService {
   }
 
   getPedidoByEntrega(): Promise<AxiosResponse<Pedido[]>> {
-    return this.axios.axiosInstance.get<Pedido[]>(`${this.apiPath}entrega/`);
+    return this.axios.axiosInstance.get<Pedido[]>(`${this.apiPath}entrega`);
   }
 
   getPedidoByData(data: string): Promise<AxiosResponse<Pedido[]>> {
