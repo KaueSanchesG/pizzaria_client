@@ -239,3 +239,18 @@
   </div>
   <div class="modal-footer"></div>
 </ng-template>
+<ng-template #confirmDelivery let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Confirmar Entrega</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <button>Salvar</button>
+    <button>Cancelar</button>
+  </div>
+</ng-template>
