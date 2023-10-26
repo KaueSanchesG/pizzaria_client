@@ -78,7 +78,10 @@
                   ></path>
                 </svg>
               </button>
-              <button class="editBtn" (click)="disable(pedido)">
+              <button
+                class="editBtn"
+                (click)="openDisableModal(confirmDelivery, pedido)"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   data-name="Artboard 30"
@@ -249,8 +252,7 @@
       (click)="modal.dismiss('Cross click')"
     ></button>
   </div>
-  <div class="modal-body">
-    <button>Salvar</button>
-    <button>Cancelar</button>
+  <div class="modal-cancel">
+    <button class="btn btn-primary">Salvar</button>
   </div>
 </ng-template>
