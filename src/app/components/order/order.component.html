@@ -22,7 +22,7 @@
     </select>
   </div>
   <div class="pedido">
-    <div class="card1">
+    <div class="card1" *ngFor="let pedido of list; let i = index">
       <div class="content">
         <div class="back">
           <div class="back-content">
@@ -49,19 +49,22 @@
                 ></path>
               </g>
             </svg>
-            <strong>Pedido</strong>
+            <strong>Pedido #{{ pedido.id }}</strong>
           </div>
         </div>
         <div class="front">
           <div class="front-content">
-            <small class="badge">Pizza: </small>
-            <!-- Aqui vai a variavel do sabor da pizza -->
+            <small class="badge">pedido n°{{ pedido.id }} </small>
             <div class="card-content">
-              <p>Cliente:</p>
-              <p>Funcionario:</p>
+              <p>Cliente: {{ pedido.cliente.nome }}</p>
+              <p>Funcionario: {{ pedido.funcionario.nome }}</p>
+              <p>Entrega: {{ pedido.entrega ? "Sim" : "Não" }}</p>
+              <p>Forma de pagamento: {{ pedido.formaDePagamento }}</p>
             </div>
             <div class="card-content">
-              <p>Produtos:</p>
+              <button (click)="openDetailsModal(detailProduto, pedido)">
+                Detalhar Produtos
+              </button>
             </div>
             <div class="card-footer">
               <button class="editBtn">
@@ -200,6 +203,35 @@
   </div>
   <div class="modal-body">
     <app-new-order></app-new-order>
+  </div>
+  <div class="modal-footer"></div>
+</ng-template>
+
+<ng-template #detailProduto let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">detalhamento de produtos</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <p>Produtos:</p>
+    <div *ngFor="let produto of produtosDoPedido">
+      <p>Nome: {{ produto.nome }} ~ Valor: {{ produto.valor }}</p>
+    </div>
+    <div *ngFor="let pizza of pizzasDoPedido">
+      <p>
+        Nome: {{ pizza.nome }} - Tamanho {{ pizza.tamanho }} - Valor:
+        {{ pizza.valor }}
+      </p>
+      ~ Sabores
+      <ul>
+        <li *ngFor="let sabor of pizza.saborList">{{ sabor.nome }}</li>
+      </ul>
+    </div>
   </div>
   <div class="modal-footer"></div>
 </ng-template>
