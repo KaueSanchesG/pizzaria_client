@@ -5,7 +5,7 @@
       <p class="subtitle">Todos seus pedidos!</p>
     </div>
     <div class="new-order">
-      <button class="learn-more">
+      <button class="learn-more" (click)="openNewOrderModal()">
         <span class="circle" aria-hidden="true">
           <span class="icon arrow"></span>
         </span>
@@ -14,15 +14,12 @@
     </div>
   </div>
   <div class="filter">
-    <input placeholder="Enter text here" class="input-style" type="text" />
     <select>
-      <option selected value="0">Pure CSS Select</option>
+      <option selected value="0">Selecione o tipo</option>
       <option value="1">No Wrapper</option>
       <option value="2">No JS</option>
       <option value="3">Nice!</option>
     </select>
-
-    <button class="btn">Buscar</button>
   </div>
   <div class="pedido">
     <div class="card">

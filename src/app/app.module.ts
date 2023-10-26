@@ -14,6 +14,9 @@ import { RegisterComponent } from './components/sistema/register/register.compon
 import { heroEye, heroEyeSlash } from '@ng-icons/heroicons/outline';
 import { FormsModule } from '@angular/forms';
 import { OrderComponent } from './components/order/order.component';
+import { NewOrderComponent } from './components/order/new-order/new-order.component';
+import { EmployeeComponent } from './components/employee/employee.component';
+import { ProductsComponent } from './components/products/products.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +28,9 @@ import { OrderComponent } from './components/order/order.component';
     LoginComponent,
     RegisterComponent,
     OrderComponent,
+    NewOrderComponent,
+    EmployeeComponent,
+    ProductsComponent,
   ],
   imports: [
     BrowserModule,
