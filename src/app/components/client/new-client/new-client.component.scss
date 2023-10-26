@@ -1,0 +1,35 @@
+.modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  button {
+    background-color: #d10000;
+    border: none;
+  }
+}
+.modal-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border-bottom: 1px solid #ccc;
+  text-transform: uppercase;
+  font-family: "NexaSlab";
+  color: #4f4a4b;
+}
+.modal-content {
+  border: none;
+  display: flex;
+  gap: 16px;
+  padding: 12px;
+  label {
+    font-family: "Public Sans", sans-serif;
+    gap: 20px;
+    padding: 8px;
+  }
+  select {
+    width: 16em;
+    border: 0.5px solid #ccc;
+    border-radius: 5px;
+  }
+}

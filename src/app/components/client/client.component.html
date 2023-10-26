@@ -63,8 +63,11 @@
                         </ng-template> -->
                       </td>
                       <td>
-                        <button (click)="openModal(enderecos, cliente)">
-                          Endereços
+                        <button
+                          class="button-table"
+                          (click)="openModal(enderecos, cliente)"
+                        >
+                          <span>Endereços</span>
                         </button>
                       </td>
                       <td>
@@ -90,7 +93,7 @@
 
 <ng-template #criarCliente let-modal>
   <div class="modal-header">
-    <h4 class="modal-title">Pessoa</h4>
+    <h4 class="modal-title">Novo Cliente</h4>
     <button
       type="button"
       class="btn-close"

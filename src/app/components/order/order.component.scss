@@ -129,69 +129,36 @@
     justify-content: center;
     border-bottom: rgba(167, 167, 167, 0.8) solid 1px;
     justify-content: start;
-
-    .input-style {
-      padding: 10px;
-      border: 2px solid #ccc;
-      border-radius: 5px;
-      font-size: 16px;
-      color: #555;
-      outline: none;
-      height: 16px;
-    }
-
-    .input-style:focus {
-      border-color: #d10000;
-      box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.25);
-    }
-    .btn {
-      font-size: 17px;
-      background: transparent;
-      border: none;
-      padding: 8px;
-      color: #555;
-      text-transform: uppercase;
-      position: relative;
-      transition: 0.5s ease;
-      cursor: pointer;
-    }
-
-    .btn::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      height: 2px;
-      width: 0;
-      background-color: #d10000;
-      transition: 0.5s ease;
-    }
-
-    .btn:hover {
-      color: white;
-      transition-delay: 0.5s;
-    }
-
-    .btn:hover::before {
-      width: 100%;
-    }
-
-    .btn::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      height: 0;
-      width: 100%;
-      background-color: #d10000;
-      transition: 0.4s ease;
-      z-index: -1;
-    }
-
-    .btn:hover::after {
-      height: 100%;
-      transition-delay: 0.4s;
-      color: #555;
+    .select-filter {
+      box-sizing: border-box;
+      select {
+        appearance: none;
+        border: 0;
+        outline: 0;
+        font: inherit;
+        width: 20rem;
+        padding: 1rem 4rem 1rem 1rem;
+        background: url(https://upload.wikimedia.org/wikipedia/commons/9/9d/Caret_down_font_awesome_whitevariation.svg)
+            no-repeat right 0.8em center / 1.4em,
+          linear-gradient(
+            to left,
+            rgba(209, 0, 0, 0.5) 3em,
+            rgba(209, 0, 0, 0.8) 3em
+          );
+        color: white;
+        border-radius: 0.25em;
+        box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        &:focus {
+          outline: none;
+        }
+        option {
+          color: inherit;
+          background-color: rgba(209, 0, 0, 0.8);
+          width: 20rem;
+          color: #fff;
+        }
+      }
     }
   }
   .pedido {
@@ -298,12 +265,15 @@
     }
 
     .front-content .badge {
-      background-color: #00000055;
-      padding: 2px 10px;
+      background-color: rgba(255, 178, 89, 0.73);
+      padding: 7px 10px;
       border-radius: 10px;
+      -webkit-backdrop-filter: blur(2px);
       backdrop-filter: blur(2px);
+      width: -moz-fit-content;
       width: fit-content;
       margin: 8px;
+      text-transform: uppercase;
     }
 
     .title {
@@ -400,8 +370,41 @@
       padding: 2px 10px;
       border-radius: 10px;
       backdrop-filter: blur(2px);
-      width: fit-content;
       margin: 8px;
+    }
+    .card-content1 {
+      padding: 2px 10px;
+      border-radius: 10px;
+
+      margin: 8px;
+      display: flex;
+      justify-content: center;
+      .btn-details {
+        border: 1px solid rgba(255, 178, 89, 0.73);
+        background: rgba(255, 178, 89, 1);
+        color: #fff;
+        padding: 8px;
+        border-radius: 10px;
+      }
+      .btn-details:hover {
+        background: #f25821;
+        color: rgba(255, 178, 89, 1);
+      }
+    }
+    .modal-title {
+      width: 44px;
+      height: 44px;
+      border-radius: 20px;
+      border: none;
+      background-color: #f25821;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.123);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s;
     }
 
     @keyframes floating {
@@ -418,4 +421,9 @@
       }
     }
   }
+}
+.modal-title {
+  font-family: "NexaSlab";
+  font-size: 24px;
+  color: #d10000;
 }

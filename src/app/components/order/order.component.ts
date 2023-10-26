@@ -104,6 +104,7 @@ export class OrderComponent {
         .catch((error) => {
           console.log('Erro ao desativar o pedido:', error);
         });
+      location.reload();
     }
   }
 }

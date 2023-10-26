@@ -142,3 +142,26 @@
     box-shadow: none;
   }
 }
+.button-table {
+  border: 1px solid #d10000;
+  border-radius: 5px;
+  span {
+    font-size: 16px;
+    padding: 4px;
+    font-family: "Public Sans", sans-serif;
+  }
+}
+.button-table:hover {
+  background-color: #d10000;
+  border-radius: 5px;
+  span {
+    font-size: 16px;
+    padding: 4px;
+    color: #fff;
+  }
+}
+.modal-title {
+  font-family: "NexaSlab";
+  font-size: 24px;
+  color: #d10000;
+}

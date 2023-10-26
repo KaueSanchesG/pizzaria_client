@@ -84,8 +84,11 @@
                       </td>
                       <td>
                         <!-- Similar editing logic for other fields -->
-                        <button (click)="openModal(sabores, pizza)">
-                          Detalhar sabores
+                        <button
+                          class="button-table"
+                          (click)="openModal(sabores, pizza)"
+                        >
+                          <span> Detalhar sabores</span>
                         </button>
                       </td>
                       <td>
@@ -108,6 +111,7 @@
   <div class="modal-header">
     <h4 class="modal-title">detalhamento de sabores</h4>
     <button
+      class="button-table"
       type="button"
       class="btn-close"
       aria-label="Close"

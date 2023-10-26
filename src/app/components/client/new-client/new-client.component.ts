@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { Cliente } from 'src/app/models/cliente';
 import { Endereco } from 'src/app/models/endereco';
 import { ClienteService } from 'src/app/services/cliente.service';
@@ -38,6 +39,7 @@ export class NewClientComponent {
       .catch((error) => {
         console.log(error);
       });
+    location.reload();
   }
 
   getEnderecos() {

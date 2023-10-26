@@ -1,86 +1,95 @@
 <div>
-  <h2>Preencha os campos</h2>
-
-  <div class="form-froup">
-    <label for="select_cliente" class="label">Cliente</label>
-    <select
-      name="select_cliente"
-      class="label estilo"
-      [(ngModel)]="pedido.cliente"
-    >
-      <option *ngFor="let cliente of clientes" [ngValue]="cliente.id">
-        {{ cliente.nome }}
-      </option>
-    </select>
+  <div class="title-modal">
+    <h2>Preencha os campos</h2>
   </div>
-
-  <div class="form-froup">
-    <label for="select_funcionario" class="label">Funcionario</label>
-    <select
-      name="select_funcionario"
-      class="label estilo"
-      [(ngModel)]="pedido.funcionario"
-    >
-      <option
-        *ngFor="let funcionario of funcionarios"
-        [ngValue]="funcionario.id"
+  <div class="content-modal">
+    <div class="form-froup">
+      <label class="label-form" for="select_cliente" class="label"
+        >Cliente</label
       >
-        {{ funcionario.nome }}
-      </option>
-    </select>
-  </div>
-
-  <div class="form-group">
-    <label for="entrega">Entrega:</label>
-    <input
-      type="checkbox"
-      id="entrega"
-      [(ngModel)]="pedido.entrega"
-      name="entrega"
-    />
-  </div>
-
-  <div class="form-group">
-    <label for="pagamento">Forma de pagamento:</label>
-    <input
-      type="text"
-      id="pagamento"
-      class="form-control"
-      [(ngModel)]="pedido.formaDePagamento"
-    />
-  </div>
-
-  <div class="form-group">
-    <label>Produtos:</label>
-    <div *ngFor="let produto of produtos">
-      <label>
-        <input
-          type="checkbox"
-          (change)="toggleProductSelection(produto)"
-          [checked]="produtoSelected.includes(produto)"
-        />
-        {{ produto.nome }} - Valor: R$ {{ produto.valor | number : "1.2-2" }}
-      </label>
+      <select
+        name="select_cliente"
+        class="label estilo"
+        [(ngModel)]="pedido.cliente"
+      >
+        <option *ngFor="let cliente of clientes" [ngValue]="cliente.id">
+          {{ cliente.nome }}
+        </option>
+      </select>
+    </div>
+    <div class="form-froup">
+      <label for="select_funcionario" class="label">Funcionario</label>
+      <select
+        name="select_funcionario"
+        class="label estilo"
+        [(ngModel)]="pedido.funcionario"
+      >
+        <option
+          *ngFor="let funcionario of funcionarios"
+          [ngValue]="funcionario.id"
+        >
+          {{ funcionario.nome }}
+        </option>
+      </select>
     </div>
   </div>
+  <div class="medium-modal">
+    <div class="form-group">
+      <label for="entrega">Entrega:</label>
+      <input
+        type="checkbox"
+        id="entrega"
+        [(ngModel)]="pedido.entrega"
+        name="entrega"
+      />
+    </div>
 
-  <div class="form-group">
-    <label>Pizzas:</label>
-    <div *ngFor="let pizza of pizzas">
-      <label>
-        <input
-          type="checkbox"
-          (change)="togglePizzaSelection(pizza)"
-          [checked]="pizzaSelected.includes(pizza)"
-        />
-        {{ pizza.nome }} - Valor R$ {{ pizza.valor }} - Tamanho:
-        {{ pizza.tamanho }} - Sabores
-        <ul>
-          <li *ngFor="let sabor of pizza.saborList">{{ sabor.nome }}</li>
-        </ul>
-      </label>
+    <div class="form-group">
+      <label for="pagamento">Forma de pagamento:</label>
+      <input
+        type="text"
+        id="pagamento"
+        class="form-control"
+        [(ngModel)]="pedido.formaDePagamento"
+      />
     </div>
   </div>
+  <div class="modal-final">
+    <div class="form-group">
+      <label>Produtos:</label>
+      <div *ngFor="let produto of produtos">
+        <label>
+          <input
+            type="checkbox"
+            (change)="toggleProductSelection(produto)"
+            [checked]="produtoSelected.includes(produto)"
+          />
+          {{ produto.nome }} - Valor: R$ {{ produto.valor | number : "1.2-2" }}
+        </label>
+      </div>
+    </div>
 
-  <button id="modalBtn" class="btn btn-primary" (click)="save()">Salvar</button>
+    <div class="form-group">
+      <label>Pizzas:</label>
+      <div *ngFor="let pizza of pizzas">
+        <label>
+          <input
+            type="checkbox"
+            (change)="togglePizzaSelection(pizza)"
+            [checked]="pizzaSelected.includes(pizza)"
+          />
+          {{ pizza.nome }} - Valor R$ {{ pizza.valor }} - Tamanho:
+          {{ pizza.tamanho }} - Sabores
+          <ul>
+            <li *ngFor="let sabor of pizza.saborList">{{ sabor.nome }}</li>
+          </ul>
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="footer-modal">
+    <button id="modalBtn" class="btn btn-primary" (click)="save()">
+      Salvar
+    </button>
+  </div>
 </div>

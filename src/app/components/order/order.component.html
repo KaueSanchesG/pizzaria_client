@@ -14,11 +14,13 @@
     </div>
   </div>
   <div class="filter1">
-    <select [(ngModel)]="selectedOption" (change)="onFilterChange()">
-      <option selected value="1">Em andamento</option>
-      <option value="2">Todos</option>
-      <option value="3">Precisa entregar</option>
-    </select>
+    <div class="select-filter">
+      <select [(ngModel)]="selectedOption" (change)="onFilterChange()">
+        <option selected value="1">Em andamento</option>
+        <option value="2">Todos</option>
+        <option value="3">Precisa entregar</option>
+      </select>
+    </div>
   </div>
   <div class="pedido">
     <div class="card1" *ngFor="let pedido of list; let i = index">
@@ -60,8 +62,11 @@
               <p>Entrega: {{ pedido.entrega ? "Sim" : "Não" }}</p>
               <p>Forma de pagamento: {{ pedido.formaDePagamento }}</p>
             </div>
-            <div class="card-content">
-              <button (click)="openDetailsModal(detailProduto, pedido)">
+            <div class="card-content1">
+              <button
+                class="btn-details"
+                (click)="openDetailsModal(detailProduto, pedido)"
+              >
                 Detalhar Produtos
               </button>
             </div>
@@ -192,7 +197,7 @@
 
 <ng-template #criarPedido let-modal>
   <div class="modal-header">
-    <h4 class="modal-title">Pessoa</h4>
+    <h4 class="modal-title">Novo Pedido</h4>
     <button
       type="button"
       class="btn-close"
