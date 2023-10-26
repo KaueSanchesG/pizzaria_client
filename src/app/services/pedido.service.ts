@@ -15,6 +15,10 @@ export class PedidoService {
     return this.axios.axiosInstance.get<Pedido[]>(this.apiPath + 'list');
   }
 
+  listByAtivo(): Promise<AxiosResponse<Pedido[]>> {
+    return this.axios.axiosInstance.get<Pedido[]>(this.apiPath + 'ativo');
+  }
+
   getPedidoByNomeCliente(nome: string): Promise<AxiosResponse<Pedido[]>> {
     return this.axios.axiosInstance.get<Pedido[]>(
       `${this.apiPath}cliente/${nome}`
@@ -27,10 +31,8 @@ export class PedidoService {
     );
   }
 
-  getPedidoByEntrega(entrega: boolean): Promise<AxiosResponse<Pedido[]>> {
-    return this.axios.axiosInstance.get<Pedido[]>(
-      `${this.apiPath}entrega/${entrega}`
-    );
+  getPedidoByEntrega(): Promise<AxiosResponse<Pedido[]>> {
+    return this.axios.axiosInstance.get<Pedido[]>(`${this.apiPath}entrega/`);
   }
 
   getPedidoByData(data: string): Promise<AxiosResponse<Pedido[]>> {

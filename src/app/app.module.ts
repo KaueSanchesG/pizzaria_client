@@ -17,6 +17,7 @@ import { OrderComponent } from './components/order/order.component';
 import { NewOrderComponent } from './components/order/new-order/new-order.component';
 import { EmployeeComponent } from './components/employee/employee.component';
 import { ProductsComponent } from './components/products/products.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { ProductsComponent } from './components/products/products.component';
     AppRoutingModule,
     NgIconsModule.withIcons({ heroEye, heroEyeSlash }),
     FormsModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
