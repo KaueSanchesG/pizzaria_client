@@ -22,22 +22,23 @@
         [(ngModel)]="cliente.cpf"
       />
     </div>
-    <div class="form-froup">
-      <label for="select_endereco" class="label">Endereço</label>
-      <select
-        name="select_endereco"
-        class="label estilo"
-        [(ngModel)]="enderecoSelecionado"
-      >
-        <option *ngFor="let endereco of enderecos" [ngValue]="endereco">
-          {{ endereco.rua }}, {{ endereco.numero }}
-        </option>
-      </select>
+    <div class="form-group">
+      <label>Endereços:</label>
+      <div *ngFor="let endereco of enderecos">
+        <label>
+          <input
+            type="checkbox"
+            (change)="toggleEnderecoSelection(endereco)"
+            [checked]="enderecoSelecionado.includes(endereco)"
+          />
+          {{ endereco.rua }}, n°{{ endereco.numero }}
+        </label>
+      </div>
     </div>
-  </div>
-  <div class="modal-footer">
-    <button id="modalBtn" class="btn btn-primary" (click)="save()">
-      Salvar
-    </button>
+    <div class="modal-footer">
+      <button id="modalBtn" class="btn btn-primary" (click)="save()">
+        Salvar
+      </button>
+    </div>
   </div>
 </div>

@@ -12,7 +12,7 @@ import { EnderecoService } from 'src/app/services/endereco.service';
 })
 export class NewClientComponent {
   enderecos: Endereco[] = [];
-  enderecoSelecionado: Endereco | null = null;
+  enderecoSelecionado: Endereco[] = [];
 
   cliente: Cliente = new Cliente();
 
@@ -26,15 +26,13 @@ export class NewClientComponent {
   }
 
   save() {
-    if (this.enderecoSelecionado) {
-      this.cliente.enderecoList = [this.enderecoSelecionado];
-    }
+    this.cliente.enderecoList = this.enderecoSelecionado;
 
     this.clienteService
       .create(this.cliente)
       .then((response) => {
         alert('Cliente cadastrado!');
-        this.retorno.emit(this.cliente);
+        // this.retorno.emit(this.cliente);
       })
       .catch((error) => {
         console.log(error);
@@ -51,5 +49,15 @@ export class NewClientComponent {
       .catch((error) => {
         console.log(error);
       });
+  }
+
+  toggleEnderecoSelection(endereco: Endereco) {
+    if (this.enderecoSelecionado.includes(endereco)) {
+      this.enderecoSelecionado = this.enderecoSelecionado.filter(
+        (p) => p !== endereco
+      );
+    } else {
+      this.enderecoSelecionado.push(endereco);
+    }
   }
 }
