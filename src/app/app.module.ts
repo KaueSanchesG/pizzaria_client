@@ -5,7 +5,6 @@ import { NgIconsModule } from '@ng-icons/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ClienteListComponent } from './components/cliente/cliente-list/cliente-list.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { IndexComponent } from './layout/index/index.component';
@@ -18,11 +17,11 @@ import { NewOrderComponent } from './components/order/new-order/new-order.compon
 import { EmployeeComponent } from './components/employee/employee.component';
 import { ProductsComponent } from './components/products/products.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ClientComponent } from './components/client/client.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ClienteListComponent,
     HeaderComponent,
     FooterComponent,
     IndexComponent,
@@ -32,6 +31,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NewOrderComponent,
     EmployeeComponent,
     ProductsComponent,
+    ClientComponent,
   ],
   imports: [
     BrowserModule,

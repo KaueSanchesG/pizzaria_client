@@ -27,13 +27,12 @@ const PIZZA: Pizza[] = [
     editing: false,
   },
 ];
-
 @Component({
-  selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss'],
+  selector: 'app-client',
+  templateUrl: './client.component.html',
+  styleUrls: ['./client.component.scss'],
 })
-export class ProductsComponent {
+export class ClientComponent {
   products = PRODUCTS;
   pizza = PIZZA;
 

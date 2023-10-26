@@ -1,1 +1,168 @@
-<p>products works!</p>
+<div class="container1">
+  <div class="header-container">
+    <div class="title-content">
+      <h1 class="title">Produtos</h1>
+      <p class="subtitle">Todos seus Produtos!</p>
+    </div>
+    <div class="new-order">
+      <button class="learn-more">
+        <span class="circle" aria-hidden="true">
+          <span class="icon arrow"></span>
+        </span>
+        <span class="button-text">Novo Produto</span>
+      </button>
+    </div>
+  </div>
+  <div class="container">
+    <div ngbAccordion #accordion="ngbAccordion">
+      <div ngbAccordionItem="first">
+        <h2 ngbAccordionHeader>
+          <button ngbAccordionButton>Produtos</button>
+        </h2>
+        <div ngbAccordionCollapse>
+          <div ngbAccordionBody>
+            <ng-template>
+              <div class="container-content">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">ID</th>
+                      <th scope="col">Nome</th>
+                      <th scope="col">Valor</th>
+                      <th scope="col">Ações</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let products of products; index as i">
+                      <th scope="row">{{ i + 1 }}</th>
+                      <td>
+                        <!-- Use ngIf to show either the country name or an input field based on an edit flag -->
+                        <ng-container *ngIf="!products.editing; else editField">
+                          {{ products.name }}
+                        </ng-container>
+                        <ng-template #editField>
+                          <input
+                            [(ngModel)]="products.name"
+                            class="form-control"
+                          />
+                        </ng-template>
+                      </td>
+                      <td>
+                        <!-- Similar editing logic for other fields -->
+                        <ng-container
+                          *ngIf="!products.editing; else editAreaField"
+                        >
+                          {{ products.valor | number }}
+                        </ng-container>
+                        <ng-template #editAreaField>
+                          <input
+                            [(ngModel)]="products.valor"
+                            class="form-control"
+                          />
+                        </ng-template>
+                      </td>
+                      <td>
+                        <!-- Toggle the editing flag for the current item -->
+                        <button
+                          class="btn btn-primary"
+                          (click)="products.editing = !products.editing"
+                        >
+                          {{ products.editing ? "Save" : "Edit" }}
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div ngbAccordion #accordion="ngbAccordion">
+      <div ngbAccordionItem="first">
+        <h2 ngbAccordionHeader>
+          <button ngbAccordionButton>Pizza</button>
+        </h2>
+        <div ngbAccordionCollapse>
+          <div ngbAccordionBody>
+            <ng-template>
+              <div class="container-content">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">ID</th>
+                      <th scope="col">Nome</th>
+                      <th scope="col">Sabor</th>
+                      <th scope="col">Tamanho</th>
+                      <th scope="col">Valor</th>
+                      <th scope="col">Ações</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let products of products; index as i">
+                      <th scope="row">{{ i + 1 }}</th>
+                      <td>
+                        <!-- Use ngIf to show either the country name or an input field based on an edit flag -->
+                        <ng-container *ngIf="!products.editing; else editField">
+                          {{ products.name }}
+                        </ng-container>
+                        <ng-template #editField>
+                          <input
+                            [(ngModel)]="products.name"
+                            class="form-control"
+                          />
+                        </ng-template>
+                      </td>
+                      <td>
+                        <!-- Similar editing logic for other fields -->
+                        <ng-container
+                          *ngIf="!products.editing; else editAreaField"
+                        >
+                          {{ products.valor | number }}
+                        </ng-container>
+                        <ng-template #editAreaField>
+                          <input
+                            [(ngModel)]="products.valor"
+                            class="form-control"
+                          />
+                        </ng-template>
+                      </td>
+                      <td>
+                        <!-- Toggle the editing flag for the current item -->
+                        <button
+                          class="btn btn-primary"
+                          (click)="products.editing = !products.editing"
+                        >
+                          {{ products.editing ? "Save" : "Edit" }}
+                        </button>
+                      </td>
+                      <td>
+                        <!-- Toggle the editing flag for the current item -->
+                        <button
+                          class="btn btn-primary"
+                          (click)="products.editing = !products.editing"
+                        >
+                          {{ products.editing ? "Save" : "Edit" }}
+                        </button>
+                      </td>
+                      <td>
+                        <!-- Toggle the editing flag for the current item -->
+                        <button
+                          class="btn btn-primary"
+                          (click)="products.editing = !products.editing"
+                        >
+                          {{ products.editing ? "Save" : "Edit" }}
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
