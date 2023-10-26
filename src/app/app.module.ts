@@ -18,6 +18,7 @@ import { EmployeeComponent } from './components/employee/employee.component';
 import { ProductsComponent } from './components/products/products.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ClientComponent } from './components/client/client.component';
+import { NewClientComponent } from './components/client/new-client/new-client.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { ClientComponent } from './components/client/client.component';
     EmployeeComponent,
     ProductsComponent,
     ClientComponent,
+    NewClientComponent,
   ],
   imports: [
     BrowserModule,

@@ -39,6 +39,7 @@ export class OrderComponent {
 
     this.modal.open(modal, { size: 'lg' });
   }
+
   openDetailsModal(modal: any, pedido: Pedido) {
     this.produtosDoPedido = pedido.produtoList;
     this.pizzasDoPedido = pedido.pizzaList;

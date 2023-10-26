@@ -5,7 +5,7 @@
       <p class="subtitle">Todos seus Clientes!</p>
     </div>
     <div class="new-order">
-      <button class="learn-more">
+      <button class="learn-more" (click)="openCreateModal(criarCliente)">
         <span class="circle" aria-hidden="true">
           <span class="icon arrow"></span>
         </span>
@@ -28,47 +28,53 @@
                     <tr>
                       <th scope="col">ID</th>
                       <th scope="col">Nome</th>
-                      <th scope="col">Valor</th>
+                      <th scope="col">CPF</th>
+                      <th scope="col">Endereços</th>
                       <th scope="col">Ações</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr *ngFor="let products of products; index as i">
-                      <th scope="row">{{ i + 1 }}</th>
+                    <tr *ngFor="let cliente of list; index as i">
+                      <th>{{ cliente.id }}</th>
                       <td>
                         <!-- Use ngIf to show either the country name or an input field based on an edit flag -->
-                        <ng-container *ngIf="!products.editing; else editField">
-                          {{ products.name }}
+                        <!-- *ngIf="!products.editing; else editField" -->
+                        <ng-container>
+                          {{ cliente.nome }}
                         </ng-container>
-                        <ng-template #editField>
+                        <!-- <ng-template #editField>
                           <input
-                            [(ngModel)]="products.name"
+                            [(ngModel)]="products.nome"
                             class="form-control"
                           />
-                        </ng-template>
+                        </ng-template> -->
                       </td>
                       <td>
                         <!-- Similar editing logic for other fields -->
-                        <ng-container
-                          *ngIf="!products.editing; else editAreaField"
-                        >
-                          {{ products.valor | number }}
+                        <!-- *ngIf="!products.editing; else editAreaField" -->
+                        <ng-container>
+                          {{ cliente.cpf }}
                         </ng-container>
-                        <ng-template #editAreaField>
+                        <!-- <ng-template #editAreaField>
                           <input
                             [(ngModel)]="products.valor"
                             class="form-control"
                           />
-                        </ng-template>
+                        </ng-template> -->
+                      </td>
+                      <td>
+                        <button (click)="openModal(enderecos, cliente)">
+                          Endereços
+                        </button>
                       </td>
                       <td>
                         <!-- Toggle the editing flag for the current item -->
-                        <button
+                        <!-- <button
                           class="btn btn-primary"
                           (click)="products.editing = !products.editing"
                         >
                           {{ products.editing ? "Save" : "Edit" }}
-                        </button>
+                        </button> -->
                       </td>
                     </tr>
                   </tbody>
@@ -81,3 +87,41 @@
     </div>
   </div>
 </div>
+
+<ng-template #criarCliente let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Pessoa</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <app-new-client></app-new-client>
+  </div>
+  <div class="modal-footer"></div>
+</ng-template>
+
+<ng-template #enderecos let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">detalhamento de produtos</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <p>Endereços:</p>
+    <div *ngFor="let endereco of enderecosDoCliente">
+      <p>
+        {{ endereco.id }}° Endereço <br />
+        Rua: {{ endereco.rua }} - N°: {{ endereco.numero }}
+      </p>
+    </div>
+  </div>
+  <div class="modal-footer"></div>
+</ng-template>

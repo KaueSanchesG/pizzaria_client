@@ -29,46 +29,20 @@
                       <th scope="col">ID</th>
                       <th scope="col">Nome</th>
                       <th scope="col">Valor</th>
-                      <th scope="col">Ações</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr *ngFor="let products of products; index as i">
-                      <th scope="row">{{ i + 1 }}</th>
+                    <tr *ngFor="let produto of produtoList; index as i">
+                      <th scope="row">{{ produto.id }}</th>
                       <td>
                         <!-- Use ngIf to show either the country name or an input field based on an edit flag -->
-                        <ng-container *ngIf="!products.editing; else editField">
-                          {{ products.name }}
+                        <ng-container>
+                          {{ produto.nome }}
                         </ng-container>
-                        <ng-template #editField>
-                          <input
-                            [(ngModel)]="products.name"
-                            class="form-control"
-                          />
-                        </ng-template>
                       </td>
                       <td>
                         <!-- Similar editing logic for other fields -->
-                        <ng-container
-                          *ngIf="!products.editing; else editAreaField"
-                        >
-                          {{ products.valor | number }}
-                        </ng-container>
-                        <ng-template #editAreaField>
-                          <input
-                            [(ngModel)]="products.valor"
-                            class="form-control"
-                          />
-                        </ng-template>
-                      </td>
-                      <td>
-                        <!-- Toggle the editing flag for the current item -->
-                        <button
-                          class="btn btn-primary"
-                          (click)="products.editing = !products.editing"
-                        >
-                          {{ products.editing ? "Save" : "Edit" }}
-                        </button>
+                        <ng-container> {{ produto.valor }} R$ </ng-container>
                       </td>
                     </tr>
                   </tbody>
@@ -93,68 +67,31 @@
                     <tr>
                       <th scope="col">ID</th>
                       <th scope="col">Nome</th>
-                      <th scope="col">Sabor</th>
+                      <th scope="col">Sabores</th>
                       <th scope="col">Tamanho</th>
                       <th scope="col">Valor</th>
-                      <th scope="col">Ações</th>
+                      <!-- <th scope="col">Ações</th> -->
                     </tr>
                   </thead>
                   <tbody>
-                    <tr *ngFor="let products of products; index as i">
-                      <th scope="row">{{ i + 1 }}</th>
+                    <tr *ngFor="let pizza of pizzaList; index as i">
+                      <th scope="row">{{ pizza.id }}</th>
                       <td>
                         <!-- Use ngIf to show either the country name or an input field based on an edit flag -->
-                        <ng-container *ngIf="!products.editing; else editField">
-                          {{ products.name }}
+                        <ng-container>
+                          {{ pizza.nome }}
                         </ng-container>
-                        <ng-template #editField>
-                          <input
-                            [(ngModel)]="products.name"
-                            class="form-control"
-                          />
-                        </ng-template>
                       </td>
                       <td>
                         <!-- Similar editing logic for other fields -->
-                        <ng-container
-                          *ngIf="!products.editing; else editAreaField"
-                        >
-                          {{ products.valor | number }}
-                        </ng-container>
-                        <ng-template #editAreaField>
-                          <input
-                            [(ngModel)]="products.valor"
-                            class="form-control"
-                          />
-                        </ng-template>
-                      </td>
-                      <td>
-                        <!-- Toggle the editing flag for the current item -->
-                        <button
-                          class="btn btn-primary"
-                          (click)="products.editing = !products.editing"
-                        >
-                          {{ products.editing ? "Save" : "Edit" }}
+                        <button (click)="openModal(sabores, pizza)">
+                          Detalhar sabores
                         </button>
                       </td>
                       <td>
-                        <!-- Toggle the editing flag for the current item -->
-                        <button
-                          class="btn btn-primary"
-                          (click)="products.editing = !products.editing"
-                        >
-                          {{ products.editing ? "Save" : "Edit" }}
-                        </button>
+                        {{ pizza.tamanho }}
                       </td>
-                      <td>
-                        <!-- Toggle the editing flag for the current item -->
-                        <button
-                          class="btn btn-primary"
-                          (click)="products.editing = !products.editing"
-                        >
-                          {{ products.editing ? "Save" : "Edit" }}
-                        </button>
-                      </td>
+                      <td>{{ pizza.valor }} R$</td>
                     </tr>
                   </tbody>
                 </table>
@@ -166,3 +103,25 @@
     </div>
   </div>
 </div>
+
+<ng-template #sabores let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">detalhamento de sabores</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <p>Sabores:</p>
+    <div *ngFor="let sabor of saboresDaPizza">
+      <p>
+        {{ sabor.id }}° Sabor <br />
+        {{ sabor.nome }}
+      </p>
+    </div>
+  </div>
+  <div class="modal-footer"></div>
+</ng-template>
