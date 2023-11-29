@@ -125,5 +125,42 @@
       </p>
     </div>
   </div>
+  <div class="form-control">
+    <button
+      type="button"
+      class="btn btn-primary"
+      aria-label="Adicionar novo endereço"
+      (click)="AddNewAdress()"
+      [disabled]="newEnderecosDoCliente.length >= 3"
+    >
+      Adicionar novo endereço
+    </button>
+
+    <div
+      class="form-group1"
+      *ngFor="let newEndereco of newEnderecosDoCliente; index as i"
+    >
+      <div class="form-group-content">
+        <label>Endereço {{ i + 1 }}:</label>
+        <input type="text" id="endereco_{{ i }}" class="form-control" />
+      </div>
+      <div class="form-group-content">
+        <label>Numero do Endereço {{ i + 1 }}:</label>
+        <input
+          type="number"
+          id="numero-endereco_{{ i }}"
+          class="form-control"
+        />
+      </div>
+    </div>
+    <button
+      id="modalBtn"
+      class="btn btn-primary"
+      *ngIf="!!newEnderecosDoCliente.length"
+      (click)="saveAdress()"
+    >
+      Salvar
+    </button>
+  </div>
   <div class="modal-footer"></div>
 </ng-template>

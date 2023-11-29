@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { window } from 'rxjs';
 import { Cliente } from 'src/app/models/cliente';
 import { Endereco } from 'src/app/models/endereco';
 import { ClienteService } from 'src/app/services/cliente.service';
@@ -16,7 +17,15 @@ export class ClientComponent {
   modal = inject(NgbModal);
 
   enderecosDoCliente: Endereco[] = [];
+  newEnderecosDoCliente: Endereco[] = [];
 
+  AddNewAdress() {
+    this.newEnderecosDoCliente.push(new Endereco());
+    console.log('adasdads', this.newEnderecosDoCliente.length);
+  }
+  saveAdress() {
+    // window?.location?.reload();
+  }
   constructor() {
     this.listAll();
   }

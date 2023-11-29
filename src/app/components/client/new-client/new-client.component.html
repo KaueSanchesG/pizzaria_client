@@ -22,23 +22,24 @@
         [(ngModel)]="cliente.cpf"
       />
     </div>
-    <div class="form-group">
-      <label>Endereços:</label>
-      <div *ngFor="let endereco of enderecos">
-        <label>
-          <input
-            type="checkbox"
-            (change)="toggleEnderecoSelection(endereco)"
-            [checked]="enderecoSelecionado.includes(endereco)"
-          />
-          {{ endereco.rua }}, n°{{ endereco.numero }}
-        </label>
+    <div class="form-group1">
+      <div class="form-group-content">
+        <label>Endereço :</label>
+
+        <input type="text" id="endereco" class="form-control" />
+      </div>
+      <div class="form-group-content">
+        <label>Numero do Endereço :</label>
+
+        <input type="number" id="numero-endereco" class="form-control" />
       </div>
     </div>
-    <div class="modal-footer">
-      <button id="modalBtn" class="btn btn-primary" (click)="save()">
-        Salvar
-      </button>
-    </div>
+  </div>
+  <div class="modal-footer">
+    <button id="modalBtn" class="btn btn-primary" (click)="save()">
+      Salvar
+    </button>
   </div>
 </div>
+
+<!-- Colocar dois botoes e duas modais para cadastro de produto e pizza -->

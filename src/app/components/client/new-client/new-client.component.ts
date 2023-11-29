@@ -13,6 +13,7 @@ import { EnderecoService } from 'src/app/services/endereco.service';
 export class NewClientComponent {
   enderecos: Endereco[] = [];
   enderecoSelecionado: Endereco[] = [];
+  isChecked: boolean = false;
 
   cliente: Cliente = new Cliente();
 
