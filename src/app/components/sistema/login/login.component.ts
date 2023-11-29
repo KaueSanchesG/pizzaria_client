@@ -9,7 +9,9 @@ import { LoginService } from 'src/app/services/auth/login.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-  constructor(private authLogin: LoginService, private router: Router) {}
+  constructor(private authLogin: LoginService, private router: Router) {
+    this.authLogin.removerToken;
+  }
 
   showPassword = false;
   login = '';
@@ -40,17 +42,20 @@ export class LoginComponent {
     }
 
     const model: Login = {
-      login: this.login,
-      senha: this.senha,
+      username: this.login,
+      password: this.senha,
     };
 
     this.isLoading = true;
     this.errorMessage = '';
 
     this.authLogin
-      .verify(model)
-      .then((response) => {
+      .login(model)
+      .then((user) => {
         setTimeout(() => {
+          console.log(user);
+          console.log('Token do usuário:', user.data.token);
+          this.authLogin.addToken(user.data.token);
           this.router.navigate(['/order']);
         }, 2000);
       })

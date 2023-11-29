@@ -12,7 +12,7 @@
         class="label estilo"
         [(ngModel)]="pedido.cliente"
       >
-        <option *ngFor="let cliente of clientes" [ngValue]="cliente.id">
+        <option *ngFor="let cliente of clientes" [ngValue]="cliente">
           {{ cliente.nome }}
         </option>
       </select>
@@ -26,7 +26,7 @@
       >
         <option
           *ngFor="let funcionario of funcionarios"
-          [ngValue]="funcionario.id"
+          [ngValue]="funcionario"
         >
           {{ funcionario.nome }}
         </option>

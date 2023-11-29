@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { PedidoService } from 'src/app/services/pedido.service';
 import { Pedido } from 'src/app/models/pedido';
 import { Produto } from 'src/app/models/produto';
@@ -18,6 +18,8 @@ export class OrderComponent {
 
   produtosDoPedido: Produto[] = [];
   pizzasDoPedido: Pizza[] = [];
+
+  modalref!: NgbModalRef;
 
   constructor(private modal: NgbModal, private service: PedidoService) {
     this.listBySelectedOption();
@@ -82,7 +84,7 @@ export class OrderComponent {
   openNewOrderModal(modal: any) {
     this.pedidoSelecionado = new Pedido();
 
-    this.modal.open(modal, { size: 'lg' });
+    this.modalref = this.modal.open(modal, { size: 'lg' });
   }
 
   openDetailsModal(modal: any, pedido: Pedido) {
@@ -105,5 +107,10 @@ export class OrderComponent {
     });
 
     location.reload();
+  }
+
+  atualizar() {
+    this.listBySelectedOption();
+    this.modalref.dismiss();
   }
 }
