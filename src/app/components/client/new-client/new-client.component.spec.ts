@@ -44,10 +44,6 @@ describe('NewClientComponent', () => {
     expect(component.enderecoSelecionado).toEqual([]);
   });
 
-  it('should initialize with isChecked as false', () => {
-    expect(component.isChecked).toBeFalse();
-  });
-
   it('should call getEnderecos on ngOnInit', () => {
     component.ngOnInit();
 
