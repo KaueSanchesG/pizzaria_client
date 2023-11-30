@@ -5,7 +5,11 @@
       <p class="subtitle">Todos seus Funcionarios!</p>
     </div>
     <div class="new-order">
-      <button class="learn-more" (click)="novoClient()">
+      <button
+        *ngIf="!isUserRoleUser()"
+        class="learn-more"
+        (click)="novoClient()"
+      >
         <span class="circle" aria-hidden="true">
           <span class="icon arrow"></span>
         </span>

@@ -7,17 +7,29 @@ import { OrderComponent } from './components/order/order.component';
 import { ProductsComponent } from './components/products/products.component';
 import { EmployeeComponent } from './components/employee/employee.component';
 import { ClientComponent } from './components/client/client.component';
+import { rotaguardGuard } from './guards/rotaguard.guard';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
+  {
+    path: 'register',
+    canActivate: [rotaguardGuard],
+
+    component: RegisterComponent,
+  },
   {
     path: 'order',
     component: IndexComponent,
+
     children: [
       { path: '', component: OrderComponent },
       { path: 'client', component: ClientComponent },
-      { path: 'employee', component: EmployeeComponent },
+      {
+        path: 'employee',
+        canActivate: [rotaguardGuard],
+
+        component: EmployeeComponent,
+      },
       { path: 'products', component: ProductsComponent },
     ],
   },

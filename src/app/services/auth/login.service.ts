@@ -20,6 +20,7 @@ export class LoginService {
   deslogar(): Promise<any> {
     return this.axios.axiosInstance.get<any>(this.apiPath + `deslogar`);
   }
+
   addToken(token: string) {
     localStorage.setItem('token', token);
   }
@@ -32,22 +33,28 @@ export class LoginService {
     return localStorage.getItem('token');
   }
 
-  hasPermission(role: string): boolean {
+  isAuthenticated(): boolean {
+    return this.getToken() !== null;
+  }
+
+  getUserRole(): string | null {
     const token = this.getToken();
     if (token) {
       const decodedToken: any = jwtDecode(token);
 
       if (!decodedToken) {
         console.error('Erro ao decodificar o token.');
-        return false;
+        return null;
       }
-      const userRoles = decodedToken.role;
-      if (userRoles == role) {
-        return true;
-      } else {
-        console.log(`Sem permissão para a role: ${role}`);
-      }
+
+      return decodedToken.role;
     }
-    return false;
+
+    return null;
+  }
+
+  hasPermission(role: string): boolean {
+    const userRole = this.getUserRole();
+    return userRole !== null && userRole === role;
   }
 }

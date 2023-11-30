@@ -2,35 +2,9 @@ import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Funcionario } from 'src/app/models/funcionario';
+import { LoginService } from 'src/app/services/auth/login.service';
 import { FuncionarioService } from 'src/app/services/funcionario.service';
 
-// interface Products {
-//   name: string;
-//   valor: number;
-//   editing: boolean;
-// }
-// interface Pizza {
-//   name: string;
-//   sabor: string;
-//   valor: number;
-//   editing: boolean;
-// }
-
-// const PRODUCTS: Products[] = [
-//   {
-//     name: 'Coca',
-//     valor: 12.0,
-//     editing: false,
-//   },
-// ];
-// const PIZZA: Pizza[] = [
-//   {
-//     name: 'Coca',
-//     sabor: 'Coca',
-//     valor: 12.0,
-//     editing: false,
-//   },
-// ];
 @Component({
   selector: 'app-employee',
   templateUrl: './employee.component.html',
@@ -42,7 +16,7 @@ export class EmployeeComponent {
   service = inject(FuncionarioService);
   modal = inject(NgbModal);
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private loginService: LoginService) {
     this.listAll();
   }
 
@@ -61,7 +35,20 @@ export class EmployeeComponent {
   openModal(modal: any) {
     this.modal.open(modal, { size: 'lg' });
   }
+
   novoClient() {
-    this.router.navigate(['/register']);
+    // Verificar se o usuário não tem a role 'USER' antes de navegar para /register
+    if (!this.isUserRoleUser()) {
+      this.router.navigate(['/register']);
+    } else {
+      console.log(
+        'Usuário com a role USER. Não é permitido criar funcionários.'
+      );
+      // Adicione lógica adicional ou redirecionamento conforme necessário.
+    }
+  }
+
+  isUserRoleUser(): boolean {
+    return this.loginService.getUserRole() === 'USER';
   }
 }
