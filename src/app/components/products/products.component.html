@@ -14,7 +14,10 @@
         <div ngbAccordionCollapse>
           <div ngbAccordionBody>
             <div class="new-order">
-              <button class="learn-more">
+              <button
+                class="learn-more"
+                (click)="openCreateProductModal(criarProduto)"
+              >
                 <span class="circle" aria-hidden="true">
                   <span class="icon arrow"></span>
                 </span>
@@ -61,7 +64,10 @@
         <div ngbAccordionCollapse>
           <div ngbAccordionBody>
             <div class="new-order">
-              <button class="learn-more">
+              <button
+                class="learn-more"
+                (click)="openCreateProductModal(criarPizza)"
+              >
                 <span class="circle" aria-hidden="true">
                   <span class="icon arrow"></span>
                 </span>
@@ -134,6 +140,38 @@
         {{ sabor.nome }}
       </p>
     </div>
+  </div>
+  <div class="modal-footer"></div>
+</ng-template>
+
+<ng-template #criarProduto let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Novo Produto</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <app-new-product (retorno)="atualizar()"></app-new-product>
+  </div>
+  <div class="modal-footer"></div>
+</ng-template>
+
+<ng-template #criarPizza let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Nova pizza</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <app-new-pizza (retorno)="atualizar()"></app-new-pizza>
   </div>
   <div class="modal-footer"></div>
 </ng-template>

@@ -13,7 +13,7 @@ import { EnderecoService } from 'src/app/services/endereco.service';
 export class NewClientComponent {
   enderecos: Endereco[] = [];
   enderecoSelecionado: Endereco[] = [];
-  isChecked: boolean = false;
+  // isChecked: boolean = false;
 
   cliente: Cliente = new Cliente();
 
@@ -33,7 +33,7 @@ export class NewClientComponent {
       .create(this.cliente)
       .then((response) => {
         alert('Cliente cadastrado!');
-        // this.retorno.emit(this.cliente);
+        this.retorno.emit(this.cliente);
       })
       .catch((error) => {
         console.log(error);

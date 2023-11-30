@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { Pizza } from 'src/app/models/pizza';
 import { Produto } from 'src/app/models/produto';
 import { Sabor } from 'src/app/models/sabor';
@@ -14,14 +14,19 @@ import { ProdutoService } from 'src/app/services/produto.service';
 export class ProductsComponent {
   pizzaList: Pizza[] = [];
   produtoList: Produto[] = [];
-  modal = inject(NgbModal);
 
-  pizzaService = inject(PizzaService);
-  produtoService = inject(ProdutoService);
+  produtoSelecionado: Produto = new Produto();
+  pizzaSelecionada: Pizza = new Pizza();
 
   saboresDaPizza: Sabor[] = [];
 
-  constructor() {
+  modalref!: NgbModalRef;
+
+  constructor(
+    private modal: NgbModal,
+    private pizzaService: PizzaService,
+    private produtoService: ProdutoService
+  ) {
     this.listAll();
   }
 
@@ -51,7 +56,18 @@ export class ProductsComponent {
     this.modal.open(modal, { size: 'lg' });
   }
 
-  // resetEditing() {
-  //   this.products.forEach((products) => (products.editing = false));
-  // }
+  openCreatePizzaModal(modal: any) {
+    this.pizzaSelecionada = new Pizza();
+
+    this.modalref = this.modal.open(modal, { size: 'lg' });
+  }
+  openCreateProductModal(modal: any) {
+    this.produtoSelecionado = new Produto();
+
+    this.modalref = this.modal.open(modal, { size: 'lg' });
+  }
+  atualizar() {
+    this.listAll();
+    this.modalref.dismiss();
+  }
 }

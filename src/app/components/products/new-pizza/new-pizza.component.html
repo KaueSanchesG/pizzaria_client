@@ -1,0 +1,56 @@
+<div>
+  <div class="title-modal">
+    <h2>Preencha os campos</h2>
+  </div>
+  <div class="form-group">
+    <label for="pagamento">Digite o nome da pizza:</label>
+    <input
+      type="text"
+      id="pizza_nome"
+      class="form-control"
+      [(ngModel)]="pizza.nome"
+    />
+  </div>
+  <div class="form-group">
+    <label for="select_tamanho" class="label"
+      >Escolha o tamanho da pizza:</label
+    >
+    <select
+      name="select_tamanho"
+      class="label estilo"
+      [(ngModel)]="pizza.tamanho"
+    >
+      <option *ngFor="let tamanho of getTamanhosEnum()" [ngValue]="tamanho">
+        {{ tamanho }}
+      </option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="pagamento">Digite o valor da pizza:</label>
+    <input
+      type="number"
+      id="pizza_nome"
+      class="form-control"
+      [(ngModel)]="pizza.valor"
+    />
+  </div>
+  <div class="form-group">
+    <label>Escolha os sabores:</label>
+    <div *ngFor="let sabor of sabores">
+      <label>
+        <input
+          type="checkbox"
+          (change)="toggleSaborSelection(sabor)"
+          [checked]="saborSelected.includes(sabor)"
+        />
+        {{ sabor.nome }}
+      </label>
+    </div>
+  </div>
+  <div class="footer-modal">
+    <button id="modalBtn" class="btn btn-primary" (click)="save()">
+      Salvar
+    </button>
+  </div>
+</div>

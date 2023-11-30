@@ -1,0 +1,25 @@
+<div>
+  <div class="form-group">
+    <label for="pagamento">Digite o nome do produto:</label>
+    <input
+      type="text"
+      id="produto_nome"
+      class="form-control"
+      [(ngModel)]="produto.nome"
+    />
+  </div>
+  <div class="form-group">
+    <label for="pagamento">Digite o valor do produto:</label>
+    <input
+      type="number"
+      id="produto_nome"
+      class="form-control"
+      [(ngModel)]="produto.valor"
+    />
+  </div>
+  <div class="footer-modal">
+    <button id="modalBtn" class="btn btn-primary" (click)="save()">
+      Salvar
+    </button>
+  </div>
+</div>

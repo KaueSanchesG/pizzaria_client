@@ -16,10 +16,11 @@ import { OrderComponent } from './components/order/order.component';
 import { NewOrderComponent } from './components/order/new-order/new-order.component';
 import { EmployeeComponent } from './components/employee/employee.component';
 import { ProductsComponent } from './components/products/products.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ClientComponent } from './components/client/client.component';
 import { NewClientComponent } from './components/client/new-client/new-client.component';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { NewProductComponent } from './components/products/new-product/new-product.component';
+import { NewPizzaComponent } from './components/products/new-pizza/new-pizza.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,8 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     ProductsComponent,
     ClientComponent,
     NewClientComponent,
+    NewProductComponent,
+    NewPizzaComponent,
   ],
   imports: [
     BrowserModule,
