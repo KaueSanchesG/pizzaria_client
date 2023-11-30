@@ -19,7 +19,6 @@ import { ProductsComponent } from './components/products/products.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ClientComponent } from './components/client/client.component';
 import { NewClientComponent } from './components/client/new-client/new-client.component';
-import { HttpRequestService } from './interceptors/httpinterceptor.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
@@ -44,13 +43,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     FormsModule,
     NgbModule,
   ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: HttpRequestService,
-      multi: true,
-    },
-  ],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
