@@ -7,13 +7,13 @@ import { OrderComponent } from './components/order/order.component';
 import { ProductsComponent } from './components/products/products.component';
 import { EmployeeComponent } from './components/employee/employee.component';
 import { ClientComponent } from './components/client/client.component';
-import { rotaguardGuard } from './guards/rotaguard.guard';
+import { RotaguardGuard } from './guards/rotaguard.guard';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
   {
     path: 'register',
-    canActivate: [rotaguardGuard],
+    canActivate: [RotaguardGuard],
 
     component: RegisterComponent,
   },
@@ -26,7 +26,7 @@ const routes: Routes = [
       { path: 'client', component: ClientComponent },
       {
         path: 'employee',
-        canActivate: [rotaguardGuard],
+        canActivate: [RotaguardGuard],
 
         component: EmployeeComponent,
       },
@@ -36,7 +36,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

@@ -1,6 +1,6 @@
 <header class="header">
   <div class="content">
-    <a href="/order">
+    <a href="/#/order">
       <img class="img-logo" src="../../../assets/logo.png" title="logo" />
     </a>
     <input class="mobile-btn" type="checkbox" id="mobile-btn" />
@@ -9,12 +9,13 @@
     ></label>
 
     <ul class="nav">
-      <li><a href="/order" title="Pedidos">Pedidos</a></li>
-      <li><a href="/order/client" title="Clientes">Clientes</a></li>
+      <li><a href="/#/order" title="Pedidos">Pedidos</a></li>
+      <li><a href="/#/order/client" title="Clientes">Clientes</a></li>
       <li *ngIf="!isUserRoleUser()">
-        <a href="/order/employee" title="Funcionarios">Funcionarios</a>
+        <a href="/#/order/employee" title="Funcionarios">Funcionarios</a>
       </li>
-      <li><a href="/order/products" title="Produtos">Produtos</a></li>
+      <li><a href="/#/order/products" title="Produtos">Produtos</a></li>
+      <li><a href="/#/" title="Sair">Sair</a></li>
     </ul>
   </div>
 </header>
