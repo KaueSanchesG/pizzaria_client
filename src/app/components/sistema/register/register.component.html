@@ -26,7 +26,7 @@
         <div class="login-info">
           <p>Login</p>
           <input
-            [(ngModel)]="funcionario.login"
+            [(ngModel)]="user.username"
             class="input"
             type="text"
             placeholder="Informa pra gente seu login"
@@ -35,22 +35,31 @@
         <div class="login-info">
           <p>Senha</p>
           <input
-            [(ngModel)]="funcionario.senha"
+            [(ngModel)]="user.password"
             class="input"
             type="password"
             placeholder="Informa pra gente a sua senha"
           />
         </div>
       </div>
-
-      <div class="login">
-        <button class="learn-more" (click)="salvar()">
-          <span class="circle" aria-hidden="true">
-            <span class="icon arrow"></span>
-          </span>
-          <span class="button-text">Criar conta</span>
-        </button>
+      <div class="login-info">
+        <p>Senha</p>
+        <input
+          [(ngModel)]="user.role"
+          class="input"
+          type="text"
+          placeholder="Informa pra gente a sua role"
+        />
       </div>
+    </div>
+
+    <div class="login">
+      <button class="learn-more" (click)="salvar()">
+        <span class="circle" aria-hidden="true">
+          <span class="icon arrow"></span>
+        </span>
+        <span class="button-text">Criar conta</span>
+      </button>
     </div>
   </div>
 </div>

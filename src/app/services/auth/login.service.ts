@@ -1,4 +1,4 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { AxiosInstance } from '../axiosConfig/axios-instance.service';
 import { AxiosResponse } from 'axios';
 import { Login } from './../../models/login';
